@@ -74,7 +74,8 @@ defmodule ExTop do
     Port.open({:spawn, "tty_sl -c -e"}, [:binary, :eof])
     IO.write IO.ANSI.clear
     send self, :collect
-    {:ok, rows} = :io.rows
+    #{:ok, rows} = :io.rows
+    rows = 30
     {:ok, %ExTop{node: Keyword.get(opts, :node, Node.self), rows: rows}}
   end
 
